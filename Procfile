@@ -1,1 +1,1 @@
-web: bundle exec python manager.py runserver
+python manager.py runserver
