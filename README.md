@@ -1,4 +1,4 @@
-# App where you can view, search, add and delete authors and books.
+# view, search, add or delete authors and books.
  Written in django and vuejs
 ##### demo: [https://github.com/idzer0lis/library](http://)
 #
