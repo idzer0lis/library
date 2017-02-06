@@ -1,6 +1,6 @@
 # view, search, add or delete authors and books.
  Written in django and vuejs
-##### demo: [https://github.com/idzer0lis/library](http://)
+##### demo: [https://djangovuejs.herokuapp.com/](http://)
 #
 #### How to install
 -Install python 2.7+
@@ -10,7 +10,7 @@
 ```
 cd djangovuejs
 pip install Django==1.6.11
-pip install djangorestframework==1
+pip install djangorestframework==2.4.8
 python manage.py syncdb
 python manage.py runserver
 ````
