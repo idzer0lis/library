@@ -8,6 +8,7 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'l@b$p)ti9(x&&8&=s2h9tv@m^u0tij3l9x%8k(41sa-^q_a)bs'
 
@@ -117,5 +118,17 @@ if DEBUG:
   )
 else:
   STATIC_ROOT=os.path.join(BASE_DIR,'static/')
+
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.9/howto/static-files/
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+STATIC_URL = '/static/'
+
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_ROOT, 'static'),
+)
 
 
