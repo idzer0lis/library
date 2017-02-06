@@ -72,7 +72,7 @@ Vue.component('autocomplete', {
             this.getRecord(this.matches[index]);
         },
         getRecord: function (name) {
-            this.$http.get('https://djangovuejs.herokuapp.com/record/'.concat(name))
+            this.$http.get('http://127.0.0.1:8000/record/'.concat(name))
                 .then(function (response) {
                     var author = JSON.parse(response.data["author"]);
                     author = author[0].fields.name;
@@ -112,16 +112,16 @@ var app = new Vue({
                 name: this.author.trim(),
                 book: [{ "book": this.book.trim() }]
             };
-            this.$http.post('https://djangovuejs.herokuapp.com/api/records/', newAuthor);
+            this.$http.post('http://djangovuejs.herokuapp.com/api/records/', newAuthor);
             this.getRecords();
         },
         removeRecord: function (index) {
-            this.$http.delete('https://djangovuejs.herokuapp.com/api/records/'.concat(this.entries[index].id));
+            this.$http.delete('http://djangovuejs.herokuapp.com/api/records/'.concat(this.entries[index].id));
             this.entries.splice(index, 1);
         },
         getRecords: function () {
             this.oneAuthor = false;
-            this.$http.get('https://djangovuejs.herokuapp.com/api/records/')
+            this.$http.get('http://djangovuejs.herokuapp.com/api/records/')
                 .then(function (response) {
                     //Wierd response data structure coming from the backend
                     //Im new to django and i dislike it because of the django way of doing things

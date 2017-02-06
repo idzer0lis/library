@@ -11,7 +11,7 @@ router = routers.DefaultRouter()
 router.register(r'records', getRecords)
 
 urlpatterns = [
-    url(r'^record/(?P<name>[\w.@+-]+)$', getRecord),
+    url(r'^record/(?P<name>[\w|\W]+)$', getRecord),
     url(r'^admin/', admin.site.urls),
     url(r'^$', index),
     url(r'^api/', include(router.urls)),

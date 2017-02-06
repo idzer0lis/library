@@ -2,7 +2,7 @@
 
 {% block table %}
     <div class="container">
-        <h2>Insert a new entry</h2>
+        <h2>New book</h2>
         <form class="form-group col-sm-8 form-horizontal">
             <label class="form-label" for="title">Author</label>
             <input class="form-control" id="title" v-model="author">
@@ -10,7 +10,7 @@
             <label class="form-label" for="description">Book</label>
             <textarea class="form-control" id="description" rows="2" v-model="book"></textarea>
 
-            <button class="btn" v-on:click="addRecord()">Submit</button>
+            <button class="btn" v-on:click="addRecord()">Create</button>
         </form>
     </div>
     <div class="container">
@@ -27,7 +27,7 @@
             </thead>
 
             <tbody v-if="oneAuthor">
-            <button class="btn" v-on:click="getEntries" v-if="oneAuthor">See the whole library</button>
+            <button class="btn" v-on:click="getRecords" v-if="oneAuthor">See the whole library</button>
               <tr v-for="author in authorEntries" >
                 <td>[[author.name]]</td>
                 <td>[[author.book]]</td>
