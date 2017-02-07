@@ -72,7 +72,7 @@ Vue.component('autocomplete', {
             this.getRecord(this.matches[index]);
         },
         getRecord: function (name) {
-            this.$http.get('http://127.0.0.1/record/'.concat(name))
+            this.$http.get('https://djangovuejs.herokuapp.com/record/'.concat(name))
                 .then(function (response) {
                     var author = JSON.parse(response.data["author"]);
                     author = author[0].fields.name;
@@ -112,11 +112,11 @@ var app = new Vue({
                 name: this.author.trim(),
                 book: [{ "book": this.book.trim() }]
             };
-            this.$http.post('http://localhost:8000/api/records/', newAuthor);
+            this.$http.post('https://djangovuejs.herokuapp.com/api/records/', newAuthor);
             this.getRecords();
         },
         removeRecord: function (index) {
-            this.$http.delete('http://127.0.0.1:8000/api/records/'.concat(this.entries[index].id));
+            this.$http.delete('https://djangovuejs.herokuapp.com/api/records/'.concat(this.entries[index].id));
             this.entries.splice(index, 1);
         },
         getRecords: function () {
