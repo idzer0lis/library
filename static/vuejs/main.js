@@ -17,9 +17,6 @@ Vue.component('autocomplete', {
     <div style="position:relative;width:20%;margin:auto;padding-bottom: 30px;"\
      v-bind:class="{\'open\':openSuggestion}">\
     <input placeholder="search" class="form-control col-sm-8" type="text" v-model="selection"\
-        @idown.enter = \'enter\'\
-        @idown.down = \'down\'\
-        @idown.up = \'up\'\
         @input = \'change\'\
     />\
     <ul class="dropdown-menu">\
@@ -49,6 +46,7 @@ Vue.component('autocomplete', {
         }
     },
     computed: {
+        // the magic
         matches() {
             return this.suggestions.filter((str) => {
                 return str.indexOf(this.selection) > -1;
@@ -67,30 +65,26 @@ Vue.component('autocomplete', {
             }
         },
         suggestionClick(index) {
-            this.selection = '';
+            this.selection = this.matches[index];
             this.open = false;
             this.getRecord(this.matches[index]);
         },
         getRecord: function (name) {
-            this.$http.get('https://djangovuejs.herokuapp.com/record/'.concat(name))
+            this.$http.get('http://localhost:8000/record/'.concat(name))
                 .then(function (response) {
-
                     var author = JSON.parse(response.data["author"]);
 
-                    if(author[0] === undefined)  {
-                        alert ('Please select an author not a book');
+                    if(author[0] === undefined) {
+                        alert('Please select an author not a book');
                         return;
                     }
-
                     author = author[0].fields.name;
-
                     var books = JSON.parse(response.data["books"]);
                     data = [];
 
                     for(var key in books) {
                         data.push({name: author, book: books[key].fields.book});
                     }
-
                     app.oneAuthor = true; 
                     app.authorEntries =  data;
             },
@@ -113,7 +107,7 @@ var app = new Vue({
         authorEntries: [], //author records
         searchList: [], //where to search
         value: '', //what to search / the input
-        oneAuthor: false //view the all authors or just one
+        oneAuthor: false //view all authors or just one
     },
     methods: {
         addRecord: function () {
@@ -121,24 +115,18 @@ var app = new Vue({
                 name: this.author.trim(),
                 book: [{ "book": this.book.trim() }]
             };
-            this.$http.post('https://djangovuejs.herokuapp.com/api/records/', newAuthor);
+            this.$http.post('http://localhost:8000/api/records/', newAuthor);
             this.getRecords();
         },
         removeRecord: function (index) {
-            console.log(index);
-            this.$http.delete('https://djangovuejs.herokuapp.com/api/records/'.concat(this.entries[index].id));
-
-            var entry = this.entries[index];
-
+            this.$http.delete('http://localhost:8000/api/records/'.concat(this.entries[index].id));
             this.entries.splice(index, 1);
         },
         getRecords: function () {
             this.oneAuthor = false;
-            this.$http.get('https://djangovuejs.herokuapp.com/api/records/')
+            this.$http.get('http://localhost:8000/api/records/')
                 .then(function (response) {
-                    this.searchList = [];
                     //Wierd response data structure coming from the backend
-                    //Its hard to prettify responses the django-way and after much time invested i realized that i can do the formating in js in 5minutes.Obviously, later, i got into troubles and did hacks to get stuff done...not cool, you can hate me
                     for(let i in response.data) { //for each author
                         this.searchList.push(response.data[i].name);
                         for(var j in response.data[i].book) { //for each book of an author

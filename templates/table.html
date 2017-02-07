@@ -34,8 +34,8 @@
                 <td><button class="btn" v-on:click="removeRecord($index)"><span class="glyphicon glyphicon-trash pull-right"></span></button></td>
               </tr>
             </tbody>
-            <tbody v-else v-for="author in entries">
-              <tr v-for="(key, value) in author.book" track-by="$index"> <!-- display each book from an author -->
+            <tbody v-else v-for="author in entries" track-by="$index">
+              <tr v-for="value in author.book"> <!-- display each book from an author -->
                 <td>[[ author.name ]]</td>
                 <td>[[ value.book ]]</td>
                 <td><button class="btn" v-on:click="removeRecord($index)"><span class="glyphicon glyphicon-trash pull-right"></span></button></td>
@@ -44,4 +44,3 @@
           </table>
     </div>
 {% endblock %}
-
