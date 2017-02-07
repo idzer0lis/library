@@ -105,7 +105,7 @@ var app = new Vue({
         authorEntries: [], //author records
         searchList: [], //where to search
         value: '', //what to search / the input
-        oneAuthor: false //view the all authors or just one
+        oneAuthor: false //view all authors or just one
     },
     methods: {
         addRecord: function () {
