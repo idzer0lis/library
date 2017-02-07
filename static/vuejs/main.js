@@ -126,7 +126,7 @@ var app = new Vue({
         },
         removeRecord: function (index) {
             console.log(index);
-            //this.$http.delete('https://djangovuejs.herokuapp.com/api/records/'.concat(this.entries[index].id));
+            this.$http.delete('https://djangovuejs.herokuapp.com/api/records/'.concat(this.entries[index].id));
 
             var entry = this.entries[index];
 
