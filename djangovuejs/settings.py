@@ -89,7 +89,6 @@ REST_FRAMEWORK = {
 
 WSGI_APPLICATION = 'djangovuejs.wsgi.application'
 
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -112,14 +111,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 TEMPLATE_DIRS = os.path.join(BASE_DIR,'templates/')
-
-if DEBUG:
-  STATICFILES_DIRS = (
-          os.path.join(BASE_DIR, "static"),
-  )
-else:
-  STATIC_ROOT=os.path.join(BASE_DIR,'static/')
-
+STATIC_ROOT=os.path.join(BASE_DIR,'static/')
 
 
 
