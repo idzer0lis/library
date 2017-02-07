@@ -3,9 +3,8 @@
 ##### demo: [https://djangovuejs.herokuapp.com/](https://djangovuejs.herokuapp.com/)
 #
 #### How to install
-- Install python 2.7+
+- Install python
 - Install pip
-- Optionally check virturalenv
 - Run the following commands
 
 ```
