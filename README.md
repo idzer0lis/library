@@ -3,11 +3,9 @@
 ##### demo: [https://djangovuejs.herokuapp.com/](https://djangovuejs.herokuapp.com/)
 #
 #### How to install
-
-Contains Procfile for heroku deploy
 - Install python 2.7+
 - Install pip
-- Optionally install virturalenv
+- Optionally check virturalenv
 - Run the following commands
 
 ```
