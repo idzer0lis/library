@@ -123,7 +123,6 @@ var app = new Vue({
             this.$http.get('http://localhost:8000/api/records/')
                 .then(function (response) {
                     //Wierd response data structure coming from the backend
-                    //Its hard to prettify responses the django-way and after much time invested i realized that i can do the formating in js in 5minutes.Obviously, later, i got into troubles and did hacks to get stuff done...not cool, you can hate me
                     for(let i in response.data) { //for each author
                         this.searchList.push(response.data[i].name);
                         for(var j in response.data[i].book) { //for each book of an author
