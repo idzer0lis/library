@@ -74,14 +74,23 @@ Vue.component('autocomplete', {
         getRecord: function (name) {
             this.$http.get('http://localhost:8000/record/'.concat(name))
                 .then(function (response) {
+
                     var author = JSON.parse(response.data["author"]);
+                    
+                    if(books[key].fields === undefined)  {
+                        alert ('Please select an author not a book');
+                        return;
+                    }
+
                     author = author[0].fields.name;
+
                     var books = JSON.parse(response.data["books"]);
                     data = [];
 
                     for(var key in books) {
                         data.push({name: author, book: books[key].fields.book});
                     }
+
                     app.oneAuthor = true; 
                     app.authorEntries =  data;
             },
