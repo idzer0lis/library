@@ -146,10 +146,3 @@ var app = new Vue({
     
     }
 });
-
-window.onload=function(){
-     $(function(){
-         if(window.location.protocol==="https:")
-             window.location.protocol="http";
-     });
- }
