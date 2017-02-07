@@ -9,5 +9,5 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "djangovuejs.settings")
 application = get_wsgi_application()
 
 # if using gunicorn enable this section
-# from whitenoise.django import DjangoWhiteNoise
-# application = DjangoWhiteNoise(application)
+from whitenoise.django import DjangoWhiteNoise
+application = DjangoWhiteNoise(application)
