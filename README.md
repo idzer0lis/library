@@ -3,14 +3,14 @@
 ##### demo: [https://djangovuejs.herokuapp.com/](http://)
 #
 #### How to install
+Contains Procfile for heroku deploy
 -Install python 2.7+
 -Install pip
--Optionally install virturalenv [https://virtualenv.pypa.io/en/stable/](http://)
+-Optionally install virturalenv
 -Run the following commands
 ```
-cd djangovuejs
-pip install Django==1.6.11
-pip install djangorestframework==2.4.8
+cd repo
+pip install requirements.txt
 python manage.py syncdb
 python manage.py runserver
 ````
