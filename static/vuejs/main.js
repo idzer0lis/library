@@ -16,7 +16,7 @@ Vue.component('autocomplete', {
   template: '\
     <div style="position:relative;width:20%;margin:auto;padding-bottom: 30px;"\
      v-bind:class="{\'open\':openSuggestion}">\
-    <input placeholder="search" class="form-control col-sm-8" type="text" 
+    <input placeholder="search" class="form-control col-sm-8" type="text"\ 
         v-model="selection"\
         @input = \'change\'\
     />\
