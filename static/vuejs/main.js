@@ -77,7 +77,7 @@ Vue.component('autocomplete', {
 
                     var author = JSON.parse(response.data["author"]);
                     
-                    if(books[key].fields === undefined)  {
+                    if(author[0] === undefined)  {
                         alert ('Please select an author not a book');
                         return;
                     }
