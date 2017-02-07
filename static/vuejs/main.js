@@ -11,9 +11,6 @@ I am using vue-resource to make ajax requests to the django backend
 //Vuejs uses double curly braces so we dont want to interfere with django template strings
 Vue.config.delimiters = ["[[","]]"] 
 
-//Heroku fixes
-Vue.http.options.emulateJSON = true;
-Vue.http.options.emulateHTTP = true;
 
 Vue.component('autocomplete', {
   template: '\
@@ -75,7 +72,7 @@ Vue.component('autocomplete', {
             this.getRecord(this.matches[index]);
         },
         getRecord: function (name) {
-            this.$http.get('http://djangovuejs.herokuapp.com/record/'.concat(name))
+            this.$http.get('http://127.0.0.1:8000/record/'.concat(name))
                 .then(function (response) {
                     var author = JSON.parse(response.data["author"]);
                     author = author[0].fields.name;
@@ -115,19 +112,19 @@ var app = new Vue({
                 name: this.author.trim(),
                 book: [{ "book": this.book.trim() }]
             };
-            this.$http.post('https://djangovuejs.herokuapp.com/api/records/', newAuthor);
+            this.$http.post('http://127.0.0.1:8000/api/records/', newAuthor);
             this.getRecords();
         },
         removeRecord: function (index) {
-            this.$http.delete('http://djangovuejs.herokuapp.com/api/records/'.concat(this.entries[index].id));
+            this.$http.delete('http://127.0.0.1:8000/api/records/'.concat(this.entries[index].id));
             this.entries.splice(index, 1);
         },
         getRecords: function () {
             this.oneAuthor = false;
-            this.$http.get('https://djangovuejs.herokuapp.com/api/records/')
+            this.$http.get('http://127.0.0.1:8000/api/records/')
                 .then(function (response) {
                     //Wierd response data structure coming from the backend
-                    //Its hard to prettify responses the django-way and after much time invested i realized that i can do the formating in js in 5minutes.Obviously, later, I got into troubles and did hacks to get stuff done...not cool, you can hate me
+                    //Its hard to prettify responses the django-way and after much time invested i realized that i can do the formating in js in 5minutes.Obviously, later, i got into troubles and did hacks to get stuff done...not cool, you can hate me
                     for(let i in response.data) { //for each author
                         this.searchList.push(response.data[i].name);
                         for(var j in response.data[i].book) { //for each book of an author
