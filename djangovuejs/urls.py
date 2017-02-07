@@ -13,7 +13,7 @@ router.register(r'records', getRecords)
 urlpatterns = [
     url(r'^record/(?P<name>[\w|\W]+)$', getRecord),
     url(r'^admin/', admin.site.urls),
-    url(r'^$', index, {'document_root': settings.STATIC_ROOT}),
+    url(r'^$', index),
     url(r'^api/', include(router.urls)),
 ]
 
