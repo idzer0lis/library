@@ -68,7 +68,7 @@ Vue.component('autocomplete', {
             }
         },
         suggestionClick(index) {
-            this.selection = this.matches[index];
+            this.selection = '';
             this.open = false;
             this.getRecord(this.matches[index]);
         },
