@@ -133,6 +133,7 @@ var app = new Vue({
                             this.searchList.push(response.data[i].book[j].book);
                         }
                     }
+                    this.searchList = _.uniq(this.searchList);
                     this.entries = response.data;
             },
             function (err) {
