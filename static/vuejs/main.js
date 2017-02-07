@@ -67,7 +67,7 @@ Vue.component('autocomplete', {
             }
         },
         suggestionClick(index) {
-            this.selection = this.matches[index];
+            this.selection = '';
             this.open = false;
             this.getRecord(this.matches[index]);
         },
@@ -76,7 +76,7 @@ Vue.component('autocomplete', {
                 .then(function (response) {
 
                     var author = JSON.parse(response.data["author"]);
-                    
+
                     if(author[0] === undefined)  {
                         alert ('Please select an author not a book');
                         return;
@@ -125,13 +125,14 @@ var app = new Vue({
             this.getRecords();
         },
         removeRecord: function (index) {
-            this.$http.delete('https://djangovuejs.herokuapp.com/api/records/'.concat(this.entries[index].id));
+            this.$http.delete('https://djangovuejs.herokuapp.com/api/records/'.concat(this.entries[index].name));
             this.entries.splice(index, 1);
         },
         getRecords: function () {
             this.oneAuthor = false;
             this.$http.get('https://djangovuejs.herokuapp.com/api/records/')
                 .then(function (response) {
+                    this.searchList = [];
                     //Wierd response data structure coming from the backend
                     //Its hard to prettify responses the django-way and after much time invested i realized that i can do the formating in js in 5minutes.Obviously, later, i got into troubles and did hacks to get stuff done...not cool, you can hate me
                     for(let i in response.data) { //for each author
