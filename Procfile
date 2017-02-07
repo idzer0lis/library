@@ -1,1 +1,1 @@
-web: gunicorn djangovuejs.wsgi --log-file -
+web: gunicorn djangovuejs.wsgi:application --preload --log-file -
