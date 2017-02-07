@@ -49,6 +49,7 @@ Vue.component('autocomplete', {
         }
     },
     computed: {
+        // the magic
         matches() {
             return this.suggestions.filter((str) => {
                 return str.indexOf(this.selection) > -1;
