@@ -1,4 +1,4 @@
-# view, search, add or delete authors and books.
+# Library search with autocomplete
  Written in django and vuejs
 ##### demo: [https://djangovuejs.herokuapp.com/](https://djangovuejs.herokuapp.com/)
 #
